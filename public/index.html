@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Attendance System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>College Attendance system</h1>
+
+        <!-- TEACHER LOGOUT BUTTON -->
+
+        <button onclick="window.location.href ='/teacher-logout'">Logout</button>
+
+        <p id="teacherWelcome"></p>
+
+        <!-- Add student form -->
+        <h2>Add Student</h2>
+    
+        <form id="studentForm">
+        <input type="text" id="studentName"placeholder="Student Name" required >
+
+         <input  type="number" id="rollNumber" placeholder="Roll Number" required >
+
+        <input  type="text" id="branch" placeholder="Branch" required>
+        
+        <input 
+         type="Number"
+        id="semester"
+        placeholder="semester"
+        required
+        >
+
+        <input 
+        type="tel"
+        id="studentMobile"
+        placeholder="Student Mobile number"
+        requied
+        >
+        <input
+         type="tel"
+        id="parentMobile"
+        placeholder="Parent Mobile number"
+        requied
+        >
+        <button type="submit">Add Student</button>
+        <button type="button" id="updateStudentButton" style="display: none;">Update Student</button>
+        </form>
+
+        <!-- LECTURE SELECTION -->
+
+        <div class="lecture-selection">
+            <label for="subjectSelect">Subject</label>
+
+            <select id="subjectSelect">
+                <option value="">Select Subject</option>
+                 <option value="DBMS">DBMS</option>
+                 <option value="Automata">Automata</option>
+                 <option value="Java">Java</option>
+                 <option value="Software Engineering">Software Engineering</option>
+                 <option value="Maths">Maths</option>
+
+            </select>
+            <label for="lectureSelect">Lecture</label>
+            <select id="lectureSelect">
+                <option value="">Select Lecture</option>
+                <option value="1">Lecture 1</option>
+                <option value="2">Lecture 2</option>
+                <option value="3">Lecture 3</option>
+                <option value="4">Lecture 4</option>
+                <option value="5">Lecture 5</option>
+            </select>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchStudent" placeholder="Search by Name or RollNumber">
+
+        </div>
+
+        <h2>Attendance Dashboard</h2>
+        <div class="dashboard-cards">
+        
+          <div class="dashboard-card">
+            <h3>Total Students</h3> 
+            <span id="totalStudents">0</span>
+        </div>
+
+       
+          <div class="dashboard-card">
+            <h3>Present</h3> 
+            <span id="presentStudents">0</span>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Absent</h3> 
+            <span id="absentStudents">0</span>
+        </div>
+
+        </div>
+          
+
+
+          <p>Average Attendance: <span
+             id="averageAttendance">0%</span></p>
+
+
+        </div>
+
+        <p class="date" id="currentDate"></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll Number</th>
+                    <th>Name</th>
+                    <th>Branch</th>
+                    <th>Semester</th>
+                    <th>student Mobile</th>
+                    <th>Parent Mobile</th>
+                    <th>Attendance</th>
+                    <th>Attendance%</th>
+                </tr>
+            </thead>
+         
+            <tbody>
+                <tr>
+                    <td>101</td>
+                    <td>Sandeep kumar</td>
+                    <td>CSE</td>
+                    <td>5</td>
+                    <td>7983024948</td>
+                    <td>9897951256</td>
+                    
+                    
+                    <td>
+                        <span class=status>Not Marked</span>
+                        <button class="present"
+                        onclick="markPresent(this)">
+                    Present</button>
+
+                    <button class="absent" onclick="markAbsent(this)">Absent</button>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <td>102</td>
+                    <td>Surya</td>
+                    <td>
+                         <span class=status>Not Marked</span>
+                        <button class="present"
+                        onclick="markPresent(this)">
+                    Present</button>
+
+                    <button class="absent" onclick="markAbsent(this)">Absent</button>
+                    </td>
+                </tr>
+                
+                
+                 <tr>
+                    <td>103</td>
+                    <td>Sandhya</td>
+                    <td>
+                         <span class=status>Not Marked</span>
+                        <button class="present"
+                        onclick="markPresent(this)">
+                    Present</button>
+
+                    <button class="absent" onclick="markAbsent(this)">Absent</button>
+                    </td>
+                </tr>
+
+
+            </tbody>
+
+        </table>
+    </div>
+
+    <h2>Attendance Histroy</h2>
+
+    <!-- HISTORY FILTER -->
+    <table id="history_table">
+      
+        <thead>
+            <tr>
+                <th>Roll Number</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Lecture</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="historyBody"></tbody>
+
+    </table>
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>

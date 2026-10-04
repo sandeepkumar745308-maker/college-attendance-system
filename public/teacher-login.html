@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Login</title>
+</head>
+<body>
+
+    <h1>teacher Login</h1>
+
+    <form id="teacherLoginForm">
+    <input
+    type="email"
+    id="teacherEmail"
+    placeholder="TeacherEmail"
+    required
+    >
+
+<br><br>
+
+ <input
+    type="password"
+    id="teacherPassword"
+    placeholder="password"
+    required
+    >
+
+    <br><br>
+
+    <button type="submit">Login</button>
+    </form>
+
+    <script>
+        // teacher login
+
+        
+
+            document.getElementById("teacherLoginForm").addEventListener("submit", async function (event) {
+                
+                event.preventDefault();
+
+                let email = document.getElementById("teacherEmail").value;
+
+                let password = document.getElementById("teacherPassword").value;
+
+                let response = await fetch("/teacher-login",{
+
+                    method: "POST",
+                    headers: {
+                        "Content-type":"application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email:email,
+                        password: password
+                    })
+                })
+
+                let data = await response.json();
+                if (response.ok){
+                    alert("Login successful");
+
+                    window.location.href = "/index.html";
+
+                }else{
+                    alert(data.message);
+                }
+            });
+        </script>
+
+        
+
+</body>
+</html>
